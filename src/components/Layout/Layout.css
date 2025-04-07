@@ -1,0 +1,26 @@
+.layout-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.layout-content {
+  display: flex;
+  gap: 2rem;
+  margin-top: 80px;
+}
+
+.layout-main {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .layout-container {
+    padding: 1rem;
+  }
+
+  .layout-content {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,259 @@
+
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  background-color: #13111C;
+  --max-width: 1400px;
+  --border-radius: 12px;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-dark to-dark-lighter min-h-screen text-white;
+  }
+}
+
+/* Keep your existing animations */
+.loader {
+  @apply flex gap-4;
+}
+
+.circle {
+  @apply w-5 h-5 rounded-full bg-primary-500 animate-bounce;
+}
+
+.circle:nth-child(2) {
+  animation-delay: 0.16s;
+}
+
+.circle:nth-child(3) {
+  animation-delay: 0.32s;
+}
+
+.shadow {
+  width: 20px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  filter: blur(1px);
+  animation: shadow 0.5s alternate infinite;
+}
+
+.shadow:nth-child(5) {
+  animation-delay: 0.16s;
+}
+
+.shadow:nth-child(6) {
+  animation-delay: 0.32s;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-1rem);
+  }
+}
+
+@keyframes shadow {
+  from {
+    transform: scale(1.1);
+    opacity: 0.4;
+  }
+  to {
+    transform: scale(0.85);
+    opacity: 0.2;
+  }
+}
+
+/* Enhanced Game Card Styles */
+[data-radix-card] {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-radix-card]:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: var(--violet-9);
+}
+
+[data-radix-card]:hover img {
+  transform: scale(1.05);
+}
+
+[data-radix-card] img {
+  transition: transform 0.3s ease;
+}
+
+/* Enhanced Button Styles */
+button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+button:hover::after {
+  transform: translateX(100%);
+}
+
+/* Enhanced Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--violet-9);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--violet-10);
+}
+
+/* Input Styles */
+input {
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+input:focus {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: var(--violet-9) !important;
+  box-shadow: 0 0 0 2px var(--violet-a5) !important;
+}
+
+/* Layout Styles */
+body {
+  background: linear-gradient(135deg, #13111C 0%, #1A1B26 100%);
+  min-height: 100vh;
+}
+
+/* Link Animations */
+a {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--violet-9);
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--violet-9);
+  transition: width 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Add after your existing styles */
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Enhanced Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Fluid Typography */
+:root {
+  --fluid-min-width: 320;
+  --fluid-max-width: 1400;
+  --fluid-min-size: 14;
+  --fluid-max-size: 16;
+  --fluid-min-scale: 1.2;
+  --fluid-max-scale: 1.333;
+  font-size: clamp(
+    var(--fluid-min-size)px,
+    calc(1rem + ((1vw - var(--fluid-min-width) * 0.01px) * var(--fluid-max-size))),
+    var(--fluid-max-size)px
+  );
+}
+
+/* Enhanced Card Animations */
+[data-radix-card] {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center bottom;
+}
+
+[data-radix-card]:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(167, 139, 250, 0.1);
+}
+
+/* Enhanced Button Animations */
+button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced Input Focus */
+input:focus {
+  transform: scale(1.01);
+  box-shadow: 
+    0 0 0 2px var(--violet-a5),
+    0 8px 20px rgba(0, 0, 0, 0.1) !important;
+}
